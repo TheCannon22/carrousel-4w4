@@ -25,12 +25,19 @@ function eddym_enqueue()
         array(),
         $version_js,
         true
-    ); // true permet d'ajouter le script à la fin du document
-
-    
+    ); // true permet d'ajouter le script à la fin du document    
 }
 
 add_action('wp_enqueue_scripts', 'eddym_enqueue');
+// IMPORTANT!!!
+/* 
+Dans Header.php
+wp_header() juste avant la balise fermeture de </head> 
+
+Dans Footer.php
+wp_footer() juste avant la balise fermeture </body> 
+sont des fonctions qui permettent d'ajouter des scripts et des styles dans le header et le footer de la page
+*/
 
 
 function genere_html()
