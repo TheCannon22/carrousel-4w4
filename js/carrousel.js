@@ -40,6 +40,27 @@
         });
     }
 
+    galerie__image.forEach((img, i) => {
+        img.addEventListener('click', function() {
+            carrousel.classList.add('carrousel--ouvrir');
+            document.getElementById('radio' + i).click();
+        });
+    });
+
+    // Ajout d'une animation CSS lors du changement d'image
+let style = document.createElement('style');
+style.innerHTML = `
+.carrousel__image {
+    transition: opacity 0.5s ease-in-out;
+}
+.carousel-radio:checked ~ .carrousel__image {
+    opacity: 0;
+}
+.carousel-radio:checked + .carrousel__image {
+    opacity: 1;
+}`;
+document.head.appendChild(style);
+
     carrousel.appendChild(radioContainer);
 
     // Create previous and next buttons
