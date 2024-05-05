@@ -1,20 +1,11 @@
 (function () {
-    //  Code du carrousel
+    // Code du carrousel
     console.log("Début du carrousel");
     // Récupération des éléments du DOM
     let carrousel = document.querySelector('.carrousel');
-    //  Affichage des éléments récupérés
-    console.log(" carrousel : ", carrousel.tagName);
-    // Récupération des éléments du DOM
     let bouton = document.querySelector('.bouton__ouvrir');
-    // Affichage des éléments récupérés
-    console.log(" bouton : ", bouton.tagName);
-    // Récupération des éléments du DOM
     let carrousel__x = document.querySelector('.carrousel__x');
-
-    // Affichage des éléments récupérés
     let galerie = document.querySelector('.galerie');
-    // Affichage des éléments récupérés
     let carrousel__figure = document.querySelector('.carrousel__figure');
     let galerie__image = galerie.querySelectorAll('img'); 
 
@@ -24,7 +15,6 @@
     let index = 0;
 
     for (let i = 0; i < galerie__image.length; i++) {
-        
         let carrousel__image = document.createElement('img');
         carrousel__image.classList.add('carrousel__image');
         carrousel__image.dataset.index = index;
@@ -32,11 +22,9 @@
         carrousel__figure.appendChild(carrousel__image);
         
         creer_radio_button(i, carrousel__image);
-        
     }
 
     function creer_radio_button(i, carrousel__image){
-        // Create radio button for each image
         let radioButton = document.createElement('input');
         radioButton.type = 'radio';
         radioButton.name = 'carousel-radio';
@@ -45,20 +33,36 @@
         radioButton.value = i;
         radioContainer.appendChild(radioButton);
     
-        // Add click event listener to radio button
         radioButton.addEventListener('click', function() {
-            // Hide all images
             let toutesLesImages = carrousel__figure.querySelectorAll('.carrousel__image');
             toutesLesImages.forEach(img => img.style.display = 'none');
-    
-            // Show clicked image
             carrousel__image.style.display = 'block';
         });
     }
 
     carrousel.appendChild(radioContainer);
 
-    carrousel.appendChild(radioContainer);
+    // Create previous and next buttons
+    let prevButton = document.createElement('button');
+    prevButton.innerHTML = 'Précédent';
+    prevButton.innerHTML = '&#8592;'; // Entité HTML pour la flèche gauche
+prevButton.classList.add('carousel-button', 'prev-button'); // Ajout de classes pour le style CSS
+    prevButton.addEventListener('click', function() {
+        index = (index > 0) ? index - 1 : galerie__image.length - 1;
+        document.getElementById('radio' + index).click();
+    });
+
+    let nextButton = document.createElement('button');
+    nextButton.innerHTML = 'Suivant';
+    nextButton.innerHTML = '&#8594;'; // Entité HTML pour la flèche droite
+nextButton.classList.add('carousel-button', 'next-button'); // Ajout de classes pour le style CSS
+    nextButton.addEventListener('click', function() {
+        index = (index < galerie__image.length - 1) ? index + 1 : 0;
+        document.getElementById('radio' + index).click();
+    });
+
+    carrousel.appendChild(prevButton);
+    carrousel.appendChild(nextButton);
 
     bouton.addEventListener('mousedown', function () {
         carrousel.classList.add('carrousel--ouvrir');
