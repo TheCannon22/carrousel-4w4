@@ -4,22 +4,35 @@
   transition: transform 0.5s;
   width: 50%;
   height: 50%;
-  top: 25%;
+  top: 250%;
   left: 25%;
-  border: 3px solid #00f;
+  border: 3px solid black;
   background-color: rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  z-index: 10000000;
 }
 
 .carrousel__x {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 3px 6px;
-  border: 1px solid #444;
+  padding: 10px 20px;
+  border: none;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-size: 16px;
   font-weight: bold;
+  background-color: #007BFF;
+  color: white;
+  transition-duration: 0.4s;
+  cursor: pointer;
   z-index: 10;
+}
+.carrousel__x:hover {
+  background-color: #0056b3;
+  color: white;
+}
+.carrousel__x:active {
+  background-color: #003d80;
+  color: white;
 }
 
 .carrousel--ouvrir {
@@ -38,4 +51,44 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.bouton__ouvrir {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.bouton__ouvrir:hover {
+  background-color: #0056b3;
+}
+.bouton__ouvrir:active {
+  background-color: #003d80;
+}
+
+.carousel-button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.carousel-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+.carousel-button:active {
+  background-color: #003d80;
+  color: white;
 }/*# sourceMappingURL=style.css.map */
